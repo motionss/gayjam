@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://nvf4ghf5vpie"]
+
+[ext_resource type="Script" uid="uid://dpd7o2056g8rw" path="res://grappling_hook.gd" id="1_fdaym"]
+[ext_resource type="Texture2D" uid="uid://dv1hfnwrrp88w" path="res://background.png" id="2_v4uoo"]
+[ext_resource type="Texture2D" uid="uid://tewc8lg0qyfb" path="res://chain.png" id="3_v4uoo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q31ol"]
+radius = 2.0
+height = 8.0
+
+[node name="GrapplingHook" type="Node2D"]
+script = ExtResource("1_fdaym")
+
+[node name="Chains" type="Sprite2D" parent="."]
+texture_repeat = 2
+rotation = -1.5708
+texture = ExtResource("3_v4uoo")
+centered = false
+offset = Vector2(-1, 0)
+region_enabled = true
+region_rect = Rect2(3, 0, 2, 0)
+
+[node name="Hook" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Hook"]
+position = Vector2(2, -0.5)
+texture = ExtResource("2_v4uoo")
+region_enabled = true
+region_rect = Rect2(40, 0, 5, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook"]
+position = Vector2(3, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_q31ol")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://vk1wqvin3g31"]
+
+[ext_resource type="Script" uid="uid://eepk5e3t4rar" path="res://find_layers.gd" id="1_errlg"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_errlg")
