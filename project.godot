@@ -13,20 +13,23 @@ config_version=5
 config/name="god_platform"
 run/main_scene="uid://b2ucrolsge1fh"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 
-Enums="*res://enums.gd"
+Enums="*res://scripts/enums.gd"
+GameData="*res://scripts/game_data.gd"
 
 [display]
 
 window/size/viewport_width=320
 window/size/viewport_height=180
+window/size/mode=3
 window/size/initial_position_type=0
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="uid://da0y1uw8i5lhw"
+mouse_cursor/custom_image_hotspot=Vector2(39, 39)
 window/default_gravity=780.0
 window/snap/snap_2d_transforms_to_pixel=true
 window/snap/snap_2d_vertices_to_pixel=true
@@ -63,8 +66,10 @@ shoot={
 
 2d_physics/layer_1="player"
 2d_physics/layer_2="world"
+2d_physics/layer_4="spikes"
 2d_physics/layer_5="box"
 2d_physics/layer_6="button"
+2d_physics/layer_7="lever"
 
 [physics]
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ciy8nu0u8anxu"]
+[gd_scene load_steps=8 format=3 uid="uid://ciy8nu0u8anxu"]
 
-[ext_resource type="Script" uid="uid://dvfxto4ldpny" path="res://spring.gd" id="1_6vrsj"]
-[ext_resource type="Texture2D" uid="uid://dv1hfnwrrp88w" path="res://background.png" id="1_61klm"]
+[ext_resource type="Script" uid="uid://dvfxto4ldpny" path="res://scripts/spring.gd" id="1_6vrsj"]
+[ext_resource type="Texture2D" uid="uid://dv1hfnwrrp88w" path="res://resources/background.png" id="1_61klm"]
+[ext_resource type="AudioStream" uid="uid://cqsrqlelxhmsn" path="res://audio/spring.wav" id="3_f6w1c"]
 
 [sub_resource type="Animation" id="Animation_f6w1c"]
 length = 0.001
@@ -112,3 +113,6 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, -2)
 shape = SubResource("RectangleShape2D_l13eo")
+
+[node name="SpringAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_f6w1c")

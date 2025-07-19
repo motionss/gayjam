@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://f0fron2p5g4"]
+
+[ext_resource type="Texture2D" uid="uid://cgw4p8cc517fm" path="res://resources/circle_50x50.png" id="1_txjku"]
+
+[sub_resource type="Curve" id="Curve_txjku"]
+_data = [Vector2(0, 1), 0.0, -2.2007, 0, 0, Vector2(1, 0), -0.353362, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_73rqc"]
+curve = SubResource("Curve_txjku")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qlg0r"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 3.51
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+radial_velocity_min = 80.0
+radial_velocity_max = 120.0
+radial_velocity_curve = SubResource("CurveTexture_73rqc")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.08
+scale_max = 0.12
+turbulence_enabled = true
+
+[node name="DieParticles" type="GPUParticles2D"]
+modulate = Color(0.94902, 0.92549, 0.545098, 1)
+z_index = 20
+emitting = false
+amount = 10
+texture = ExtResource("1_txjku")
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_qlg0r")

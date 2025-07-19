@@ -1,11 +1,18 @@
-[gd_scene load_steps=25 format=3 uid="uid://c6yue8aaqaewt"]
+[gd_scene load_steps=24 format=3 uid="uid://c6yue8aaqaewt"]
 
-[ext_resource type="Script" uid="uid://bwrvqk4n2vdnc" path="res://player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://dqy3c8nq5dv0b" path="res://player_new.png" id="2_qhqgy"]
-[ext_resource type="Script" uid="uid://dsfu1bvbg1ysy" path="res://gun.gd" id="3_dqkch"]
+[ext_resource type="Script" uid="uid://bwrvqk4n2vdnc" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Shader" uid="uid://ct6ui6wqba6h8" path="res://resources/shaders/blink.gdshader" id="1_tuyoq"]
+[ext_resource type="Script" uid="uid://dsfu1bvbg1ysy" path="res://scripts/gun.gd" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cgw4p8cc517fm" path="res://resources/circle_50x50.png" id="3_qlg0r"]
-[ext_resource type="Texture2D" uid="uid://dv1hfnwrrp88w" path="res://background.png" id="4_dqkch"]
-[ext_resource type="Script" uid="uid://cy0xmxecboof0" path="res://raycast_draw.gd" id="4_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://dv1hfnwrrp88w" path="res://resources/background.png" id="4_dqkch"]
+[ext_resource type="SpriteFrames" uid="uid://bkiulf54rm5pt" path="res://scenes/res/player_two_hand.tres" id="4_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://jg46nmbdg56o" path="res://audio/hook_launch.wav" id="7_3v2ag"]
+[ext_resource type="AudioStream" uid="uid://c21m6exinh48l" path="res://audio/run_final.wav" id="7_fjrip"]
+[ext_resource type="AudioStream" uid="uid://biie3m67ecnin" path="res://audio/land.wav" id="8_ur7pv"]
+[ext_resource type="AudioStream" uid="uid://cvf83l32o2evl" path="res://audio/jump.wav" id="9_ur7pv"]
+[ext_resource type="AudioStream" uid="uid://boujyoqjqhra2" path="res://audio/death.wav" id="10_y4r1p"]
+[ext_resource type="AudioStream" uid="uid://buh3bqe2fcggj" path="res://audio/death_explosion.mp3" id="11_d2wvv"]
+[ext_resource type="AudioStream" uid="uid://cuktg4xytfl36" path="res://audio/stab.wav" id="11_jej6c"]
 
 [sub_resource type="Curve" id="Curve_dqkch"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.62801, 0.0, 0, 0]
@@ -35,124 +42,21 @@ scale_max = 0.04
 scale_curve = SubResource("CurveTexture_fjrip")
 turbulence_enabled = true
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
-atlas = ExtResource("2_qhqgy")
-region = Rect2(80, 15, 16, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
-atlas = ExtResource("2_qhqgy")
-region = Rect2(96, 15, 16, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
-atlas = ExtResource("2_qhqgy")
-region = Rect2(0, 15, 16, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
-atlas = ExtResource("2_qhqgy")
-region = Rect2(112, 15, 16, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
-atlas = ExtResource("2_qhqgy")
-region = Rect2(64, 15, 16, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
-atlas = ExtResource("2_qhqgy")
-region = Rect2(16, 15, 16, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
-atlas = ExtResource("2_qhqgy")
-region = Rect2(32, 15, 16, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
-atlas = ExtResource("2_qhqgy")
-region = Rect2(48, 15, 16, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
-atlas = ExtResource("2_qhqgy")
-region = Rect2(64, 15, 16, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
-atlas = ExtResource("2_qhqgy")
-region = Rect2(80, 15, 16, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
-atlas = ExtResource("2_qhqgy")
-region = Rect2(96, 15, 16, 17)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_gyffv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d2wvv")
-}],
-"loop": true,
-"name": &"about_to_fall",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3v2ag")
-}],
-"loop": true,
-"name": &"fall",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 5.0,
-"texture": SubResource("AtlasTexture_f1ej7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oprun")
-}, {
-"duration": 20.0,
-"texture": SubResource("AtlasTexture_f1ej7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oprun")
-}, {
-"duration": 10.0,
-"texture": SubResource("AtlasTexture_f1ej7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oprun")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jej6c")
-}],
-"loop": true,
-"name": &"jump",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qlg0r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tuyoq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fjrip")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_smehm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ur7pv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y4r1p")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 15.0
-}]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fjrip"]
+shader = ExtResource("1_tuyoq")
+shader_parameter/blink_color = Color(0.94902, 0.92549, 0.545098, 1)
+shader_parameter/intensity = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbghi"]
+size = Vector2(7, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
+size = Vector2(2, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tuyoq"]
+size = Vector2(1.5, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjrip"]
 size = Vector2(7, 10)
 
 [node name="Player" type="CharacterBody2D"]
@@ -167,42 +71,69 @@ texture = ExtResource("3_qlg0r")
 process_material = SubResource("ParticleProcessMaterial_dqkch")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_gyffv")
-animation = &"idle"
+light_mask = 5
+material = SubResource("ShaderMaterial_fjrip")
+sprite_frames = ExtResource("4_tuyoq")
+animation = &"about_to_fall"
 offset = Vector2(0, -0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_hbghi")
 
+[node name="LeftWallArea" type="Area2D" parent="CollisionShape2D"]
+position = Vector2(-4.5, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/LeftWallArea"]
+shape = SubResource("RectangleShape2D_qlg0r")
+debug_color = Color(0.236922, 0.637064, 1.34766e-06, 0.42)
+
+[node name="RightWallArea" type="Area2D" parent="CollisionShape2D"]
+position = Vector2(4.25, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/RightWallArea"]
+shape = SubResource("RectangleShape2D_tuyoq")
+debug_color = Color(0.236922, 0.637064, 1.34766e-06, 0.42)
+
+[node name="HurtBox" type="Area2D" parent="CollisionShape2D"]
+position = Vector2(-1.5, -3)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/HurtBox"]
+position = Vector2(1, 3)
+shape = SubResource("RectangleShape2D_fjrip")
+debug_color = Color(0.989939, 0, 0.284457, 0.42)
+
 [node name="FeetMarker" type="Marker2D" parent="."]
 position = Vector2(0, 8)
 
 [node name="HeadTopRightIn" type="RayCast2D" parent="."]
 position = Vector2(5, -3)
-target_position = Vector2(0, -1)
+target_position = Vector2(0, -3)
 collision_mask = 2
-script = ExtResource("4_tuyoq")
 
 [node name="HeadTopRightOut" type="RayCast2D" parent="."]
 position = Vector2(1, -3)
-target_position = Vector2(0, -1)
+target_position = Vector2(0, -3)
 collision_mask = 2
-script = ExtResource("4_tuyoq")
 
 [node name="HeadTopLeftIn" type="RayCast2D" parent="."]
 position = Vector2(-5, -3)
-target_position = Vector2(0, -1)
+target_position = Vector2(0, -3)
 collision_mask = 2
-script = ExtResource("4_tuyoq")
 
 [node name="HeadTopLeftOut" type="RayCast2D" parent="."]
 position = Vector2(-1, -3)
-target_position = Vector2(0, -1)
+target_position = Vector2(0, -3)
 collision_mask = 2
-script = ExtResource("4_tuyoq")
 
 [node name="Gun" type="Node2D" parent="."]
+visible = false
 script = ExtResource("3_dqkch")
 
 [node name="GunPivot" type="Marker2D" parent="Gun"]
@@ -228,3 +159,25 @@ region_rect = Rect2(40, 8, 8, 6)
 position = Vector2(4.5, -2.5)
 
 [node name="GrapplePoint" type="Node2D" parent="Gun"]
+
+[node name="HookLaunchAudio" type="AudioStreamPlayer2D" parent="Gun"]
+stream = ExtResource("7_3v2ag")
+
+[node name="RunAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_fjrip")
+
+[node name="LandAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_ur7pv")
+
+[node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_ur7pv")
+
+[node name="StabAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_jej6c")
+volume_db = 6.0
+
+[node name="DeathAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_y4r1p")
+
+[node name="DeathExplosionAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_d2wvv")

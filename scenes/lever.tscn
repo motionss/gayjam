@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://c7buiovmgk2hc"]
+
+[ext_resource type="Script" uid="uid://dk7djjk8i0f0c" path="res://scripts/lever.gd" id="1_ncfea"]
+[ext_resource type="Texture2D" uid="uid://dv1hfnwrrp88w" path="res://resources/background.png" id="2_ncfea"]
+[ext_resource type="Texture2D" uid="uid://cxpskpp2r6lvr" path="res://resources/light_64x64.png" id="2_qxmkn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkrws"]
+atlas = ExtResource("2_ncfea")
+region = Rect2(0, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncfea"]
+atlas = ExtResource("2_ncfea")
+region = Rect2(16, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxmkn"]
+atlas = ExtResource("2_ncfea")
+region = Rect2(32, 96, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dkrws"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkrws")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncfea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxmkn")
+}],
+"loop": false,
+"name": &"on",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efr3d"]
+size = Vector2(8, 9)
+
+[node name="Lever" type="StaticBody2D" groups=["lever"]]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("1_ncfea")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+enabled = false
+color = Color(0.94902, 0.92549, 0.545098, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = ExtResource("2_qxmkn")
+texture_scale = 0.6
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 4)
+sprite_frames = SubResource("SpriteFrames_dkrws")
+animation = &"off"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_efr3d")

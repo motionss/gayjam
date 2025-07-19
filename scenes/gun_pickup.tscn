@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://eaj1du5041bq"]
+
+[ext_resource type="Script" uid="uid://1labpvi2iuo" path="res://scripts/gun_pickup.gd" id="1_g12hn"]
+[ext_resource type="Texture2D" uid="uid://dv1hfnwrrp88w" path="res://resources/background.png" id="1_t3eie"]
+[ext_resource type="Texture2D" uid="uid://cxpskpp2r6lvr" path="res://resources/light_64x64.png" id="3_fel3n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g12hn"]
+radius = 8.0
+
+[node name="GunPickup" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_g12hn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g12hn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_t3eie")
+region_enabled = true
+region_rect = Rect2(33, 0, 7, 5)
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+color = Color(0.94902, 0.92549, 0.545098, 1)
+range_item_cull_mask = 2
+texture = ExtResource("3_fel3n")
+texture_scale = 0.5

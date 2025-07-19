@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2mmwp4e87i5q"]
+
+[ext_resource type="Script" uid="uid://c54dxss5knx4m" path="res://scripts/soup_pickup.gd" id="1_fwwu7"]
+[ext_resource type="Texture2D" uid="uid://dv1hfnwrrp88w" path="res://resources/background.png" id="2_37ro0"]
+[ext_resource type="Texture2D" uid="uid://cxpskpp2r6lvr" path="res://resources/light_64x64.png" id="3_kapx7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g12hn"]
+radius = 44.0
+
+[node name="SoupPickup" type="Area2D"]
+z_index = -1
+collision_layer = 0
+script = ExtResource("1_fwwu7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g12hn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_37ro0")
+region_enabled = true
+region_rect = Rect2(72, 0, 16, 16)
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+color = Color(0.94902, 0.92549, 0.545098, 1)
+range_item_cull_mask = 6
+texture = ExtResource("3_kapx7")
